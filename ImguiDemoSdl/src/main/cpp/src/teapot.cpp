@@ -286,6 +286,7 @@ void Teapot::draw()
 
     GLint viewport[4];
     glGetIntegerv(GL_VIEWPORT, viewport);
+    glCheckError();
     GLfloat aspect = (GLfloat) viewport[2] / (GLfloat) viewport[3];
 
     const GLfloat camDistance = 100.0f;
@@ -315,15 +316,19 @@ void Teapot::draw()
     unfData.worldViewProj = mvp;
 
     glUseProgram(program);
+    glCheckError();
+
 #ifdef GL_PROFILE_GL3
     glBindVertexArray(g_vao);
+    glCheckError();
 #endif
 
     glEnable(GL_DEPTH_TEST);
-
     glCheckError();
+
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glCheckError();
+
     glVertexAttribPointer(attribs.g_Position, 3, GL_FLOAT, GL_FALSE, sizeof(vtxData), (void*)offsetof(vtxData, pos));
     glEnableVertexAttribArray(attribs.g_Position);
     glCheckError();
@@ -345,24 +350,33 @@ void Teapot::draw()
     glCheckError();
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-
     glCheckError();
 
     glUniformMatrix4fv(uniforms.world, 1, GL_FALSE, &unfData.world[0][0]);
+    glCheckError();
     glUniformMatrix4fv(uniforms.worldViewProj, 1, GL_FALSE, &unfData.worldViewProj[0][0]);
+    glCheckError();
     glUniformMatrix4fv(uniforms.worldInverseTranspose, 1, GL_FALSE, &unfData.worldInverseTranspose[0][0]);
+    glCheckError();
     glUniformMatrix4fv(uniforms.viewInverse, 1, GL_FALSE, &unfData.viewInverse[0][0]);
-
     glCheckError();
 
     glActiveTexture(GL_TEXTURE0);
+    glCheckError();
     glBindTexture(GL_TEXTURE_2D, tex_bump);
+    glCheckError();
     glUniform1i(uniforms.normalSampler, 0);
+    glCheckError();
+
     glActiveTexture(GL_TEXTURE1);
+    glCheckError();
     glBindTexture(GL_TEXTURE_CUBE_MAP, tex_skybox);
+    glCheckError();
     glUniform1i(uniforms.envSampler, 1);
+    glCheckError();
 
     glDrawElements(GL_TRIANGLES, num_indices, GL_UNSIGNED_SHORT, 0);
+    glCheckError();
 }
 
 void Teapot::rotateBy(float angleX, float angleY)

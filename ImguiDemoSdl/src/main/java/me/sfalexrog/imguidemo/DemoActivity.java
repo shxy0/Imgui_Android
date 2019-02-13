@@ -18,7 +18,9 @@ import java.io.InputStream;
 public class DemoActivity extends SDLActivity {
 
     /* A fancy way of getting the class name */
-    private static final String TAG = DemoActivity.class.getSimpleName();
+    // private static final String TAG = DemoActivity.class.getSimpleName();
+    
+    private static final String TAG = "DemoActivitySDL2";
 
     /* A list of assets to copy to internal directory */
     private static final String[] ASSET_NAMES = new String[]{"bump.jpg",

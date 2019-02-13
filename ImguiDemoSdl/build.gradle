@@ -5,16 +5,23 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "me.sfalexrog.imguidemo"
+
         minSdkVersion 14
         targetSdkVersion 25
+
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11"
                 targets "demo"
             }
+        }
+        ndk {
+            abiFilters 'armeabi-v7a' // , 'arm64-v8a'
         }
     }
     buildTypes {

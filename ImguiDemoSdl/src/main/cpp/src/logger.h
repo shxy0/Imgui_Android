@@ -6,11 +6,22 @@
 #define XPLATDEV_LOGGER_H
 
 #ifdef __ANDROID__
+
 #include <android/log.h>
-#define LOG_TAG "NativeApp"
+// #include <cutils/log.h>
+
+#define LOG_TAG "ImguiSDL"
+
+#define alogE(...) __android_log_print(ANDROID_LOG_ERROR,   LOG_TAG, __VA_ARGS__)
+#define alogW(...) __android_log_print(ANDROID_LOG_WARN,    LOG_TAG, __VA_ARGS__)
+#define alogI(...) __android_log_print(ANDROID_LOG_INFO,    LOG_TAG, __VA_ARGS__)
+#define alogD(...) __android_log_print(ANDROID_LOG_DEBUG,   LOG_TAG, __VA_ARGS__)
+#define alogV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+
 #else
 #include <iostream>
 #endif
+
 #include <sstream>
 
 namespace _Logger {

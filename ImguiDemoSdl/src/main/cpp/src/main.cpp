@@ -187,10 +187,8 @@ int main(int argc, char** argv)
             while (SDL_PollEvent(&e)) {
                 bool handledByImGui = processEvent(&e);
                 {
-                    switch (e.type) {
-                        case SDL_QUIT:
-                            done = true;
-                            break;
+                    switch (e.type) 
+                    {
                         case SDL_MOUSEBUTTONDOWN:
                             prevX = e.button.x;
                             prevY = e.button.y;
@@ -210,6 +208,30 @@ int main(int argc, char** argv)
                             break;
                         case SDL_MOUSEWHEEL:
                             deltaZoom += e.wheel.y / 100.0f;
+                            break;
+                            
+                        case SDL_QUIT:
+                            done = true;
+                            alogI("SDL_QUIT");
+                            break;
+
+                        case SDL_APP_TERMINATING:
+                            alogI("SDL_APP_terminating");
+                            break;
+                        case SDL_APP_LOWMEMORY:
+                            alogI("SDL_APP_low-memory");
+                            break;
+                        case SDL_APP_WILLENTERBACKGROUND:
+                            alogI("SDL_APP_will-enter-back-ground");
+                            break;
+                        case SDL_APP_DIDENTERBACKGROUND:
+                            alogI("SDL_APP_did-enter-back-ground");
+                            break;
+                        case SDL_APP_WILLENTERFOREGROUND:
+                            alogI("SDL_APP_will-enter-fore-ground");
+                            break;
+                        case SDL_APP_DIDENTERFOREGROUND:
+                            alogI("SDL_APP_did-enter-fore-ground");
                             break;
                         default:
                             break;
