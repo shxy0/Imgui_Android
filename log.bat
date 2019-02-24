@@ -1,0 +1,1 @@
+adb logcat -s SDL ImSDL cppImSDL javaImSDL libEGL Adreno-EGL ActivityManager ContextImpl dalvikvm OpenGLRenderer WindowState

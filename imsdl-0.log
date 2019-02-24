@@ -1,0 +1,240 @@
+
+D/dalvikvm( 3795): GC_EXPLICIT freed 1195K, 72% free 3136K/11056K, paused 1ms+2ms, total 22ms
+D/dalvikvm( 1070): WAIT_FOR_CONCURRENT_GC blocked 1ms
+D/dalvikvm( 1070): GC_EXPLICIT freed 3499K, 51% free 26071K/52536K, paused 3ms+11ms, total 78ms
+D/dalvikvm( 1070): GC_EXPLICIT freed 342K, 51% free 25820K/52536K, paused 3ms+7ms, total 67ms
+D/dalvikvm( 3795): GC_EXPLICIT freed 380K, 70% free 3386K/11056K, paused 1ms+5ms, total 24ms
+D/dalvikvm( 1070): GC_EXPLICIT freed 90K, 51% free 25819K/52536K, paused 4ms+7ms, total 65ms
+
+I/ActivityManager( 1070): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=me.sfalexrog.imguidemo/.DemoActivity bnds=[360,693][530,873]} from pid 1308
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityManagerService.activityPaused:4576 android.app.ActivityManagerNative.onTransact:422 com.android.server.am.ActivityManagerService.onTransact:1747
+
+D/dalvikvm(17031): Late-enabling CheckJNI
+
+I/ActivityManager( 1070): Start proc me.sfalexrog.imguidemo for activity me.sfalexrog.imguidemo/.DemoActivity: pid=17031 uid=10075 gids={50075, 1028}
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.realStartActivityLocked:782 com.android.server.am.ActivityManagerService.attachApplicationLocked:4370 com.android.server.am.ActivityManagerService.attachApplication:4434 android.app.ActivityManagerNative.onTransact:390
+
+W/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack realStartActivityLocked call sendApkLanuchIntent rId = 39
+W/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack realStartActivityLocked call sendApkLanuchIntent LastPausedId = 2
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.realStartActivityLocked:801 com.android.server.am.ActivityManagerService.attachApplicationLocked:4370 com.android.server.am.ActivityManagerService.attachApplication:4434
+
+V/SDL     (17031): Device: N9180
+V/SDL     (17031): Model: N9180
+V/SDL     (17031): onCreate(): null
+D/dalvikvm(17031): Trying to load lib /data/app-lib/me.sfalexrog.imguidemo-2/libdemo.so 0x418ce590
+D/dalvikvm(17031): Added shared   lib /data/app-lib/me.sfalexrog.imguidemo-2/libdemo.so 0x418ce590
+
+I/ImSDL   (17031): onCreate - API Level 18
+V/ImSDL   (17031): Copying assets to accessible locations
+V/ImSDL   (17031): Copying bump.jpg
+V/ImSDL   (17031): Copying skybox-negx.jpg
+V/ImSDL   (17031): Copying skybox-negy.jpg
+V/ImSDL   (17031): Copying skybox-negz.jpg
+V/ImSDL   (17031): Copying skybox-posx.jpg
+V/ImSDL   (17031): Copying skybox-posy.jpg
+V/ImSDL   (17031): Copying skybox-posz.jpg
+V/ImSDL   (17031): Copying Roboto-Medium.ttf
+I/ImSDL   (17031): onStart
+
+V/SDL     (17031): onResume()
+I/ImSDL   (17031): onResume
+
+D/libEGL  (17031): loaded /vendor/lib/egl/libEGL_adreno.so
+D/libEGL  (17031): loaded /vendor/lib/egl/libGLESv1_CM_adreno.so
+D/libEGL  (17031): loaded /vendor/lib/egl/libGLESv2_adreno.so
+
+I/Adreno-EGL(17031): <qeglDrvAPI_eglInitialize:381>: EGL 1.4 QUALCOMM build: AU_LINUX_ANDROID_JB_3.2.1_RB4.04.03.00.172.067_msm8226_JB_3.2.1_RB4__release_AU ()
+I/Adreno-EGL(17031): OpenGL ES Shader Compiler Version: 20.00.03
+I/Adreno-EGL(17031): Build Date: 02/26/14 Wed
+I/Adreno-EGL(17031): Local Branch:
+I/Adreno-EGL(17031): Remote Branch: quic/jb_3.2.1_rb4.6
+I/Adreno-EGL(17031): Local Patches: NONE
+I/Adreno-EGL(17031): Reconstruct Branch: AU_LINUX_ANDROID_JB_3.2.1_RB4.04.03.00.172.067 +  NOTHING
+
+D/OpenGLRenderer(17031): Enabling debug mode 0
+
+V/SDL     (17031): surfaceCreated()
+V/SDL     (17031): surfaceChanged()
+V/SDL     (17031): pixel format RGB_565
+V/SDL     (17031): Window size: 720x1230
+I/SDL     (17031): SDL_Android_Init()
+I/SDL     (17031): SDL_Android_Init() finished!
+V/SDL     (17031): nativeResume()
+
+I/ImSDL   (17031): Got file: .
+I/ImSDL   (17031): Got file: ..
+I/ImSDL   (17031): Got file: Roboto-Medium.ttf
+I/ImSDL   (17031): Got file: bump.jpg
+I/ImSDL   (17031): Got file: imgui.ini
+I/ImSDL   (17031): Got file: skybox-negx.jpg
+I/ImSDL   (17031): Got file: skybox-negy.jpg
+I/ImSDL   (17031): Got file: skybox-negz.jpg
+I/ImSDL   (17031): Got file: skybox-posx.jpg
+I/ImSDL   (17031): Got file: skybox-posy.jpg
+I/ImSDL   (17031): Got file: skybox-posz.jpg
+I/ImSDL   (17031): Creating SDL_Window
+
+E/libEGL  (17031): validate_display:257 error 3008 (EGL_BAD_DISPLAY)
+
+V/SDL     (17031): setOrientation() orientation=-1 width=1280 height=800 resizable=true hint=
+
+I/ImSDL   (17031): Got context: 2.0es, R5G6B5A0, depth bits: 16
+I/ImSDL   (17031): Initializing ImGui for GLES2
+I/ImSDL   (17031): Setting processEvent and newFrame functions appropriately
+I/ImSDL   (17031): Finished initialization
+I/ImSDL   (17031): Entering main loop
+
+V/SDL     (17031): onWindowFocusChanged(): true
+I/ActivityManager( 1070): Displayed me.sfalexrog.imguidemo/.DemoActivity: +352ms
+I/ActivityManager( 1070): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10200000 cmp=cn.nubia.launcher/com.android.launcher2.Launcher} from pid 1070
+
+V/SDL     (17031): onPause()
+V/SDL     (17031): nativePause()
+I/ImSDL   (17031): SDL_APP_will-enter-Back-ground
+I/ImSDL   (17031): SDL_APP_done-enter-Back-ground
+I/ImSDL   (17031): onPause
+
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityManagerService.activityPaused:4576 android.app.ActivityManagerNative.onTransact:422 com.android.server.am.ActivityManagerService.onTransact:1747
+
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 prevTaskId = 39
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 nextTaskId = 2
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.resumeTopActivityLocked:1732 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.resumeTopActivityLocked:1799 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212 com.android.server.am.ActivityStack.activityPaused:1109
+
+V/SDL     (17031): onWindowFocusChanged(): false
+V/SDL     (17031): surfaceDestroyed()
+
+I/ImSDL   (17031): onStop
+
+I/ActivityManager( 1070): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=me.sfalexrog.imguidemo/.DemoActivity bnds=[360,693][530,873]} from pid 1308
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityManagerService.activityPaused:4576 android.app.ActivityManagerNative.onTransact:422 com.android.server.am.ActivityManagerService.onTransact:1747
+
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 prevTaskId = 2
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 nextTaskId = 39
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.resumeTopActivityLocked:1732 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.resumeTopActivityLocked:1799 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212 com.android.server.am.ActivityStack.activityPaused:1109
+
+I/ImSDL   (17031): onRestart
+I/ImSDL   (17031): onStart
+V/SDL     (17031): onResume()
+I/ImSDL   (17031): onResume
+V/SDL     (17031): surfaceCreated()
+V/SDL     (17031): surfaceChanged()
+V/SDL     (17031): pixel format RGB_565
+V/SDL     (17031): Window size: 720x1230
+V/SDL     (17031): onWindowFocusChanged(): true
+V/SDL     (17031): nativeResume()
+
+W/Adreno-EGL(17031): <qeglDrvAPI_eglMakeCurrent:2980>: EGL_BAD_MATCH
+E/libEGL  (17031): eglMakeCurrent:671 error 3009 (EGL_BAD_MATCH)
+
+I/ImSDL   (17031): SDL_APP_will-enter-Fore-ground
+I/ImSDL   (17031): SDL_APP_done-enter-Fore-ground
+
+D/dalvikvm( 1070): GC_CONCURRENT freed 5050K, 50% free 26449K/52536K, paused 8ms+11ms, total 99ms
+D/dalvikvm( 1117): GC_FOR_ALLOC freed 5726K, 33% free 17624K/26032K, paused 20ms, total 20ms
+
+I/ActivityManager( 1070): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10200000 cmp=cn.nubia.launcher/com.android.launcher2.Launcher} from pid 1070
+
+V/SDL     (17031): onPause()
+V/SDL     (17031): nativePause()
+I/ImSDL   (17031): onPause
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityManagerService.activityPaused:4576 android.app.ActivityManagerNative.onTransact:422 com.android.server.am.ActivityManagerService.onTransact:1747
+
+I/ImSDL   (17031): SDL_APP_will-enter-Back-ground
+I/ImSDL   (17031): SDL_APP_done-enter-Back-ground
+
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 prevTaskId = 39
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 nextTaskId = 2
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.resumeTopActivityLocked:1732 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.resumeTopActivityLocked:1799 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212 com.android.server.am.ActivityStack.activityPaused:1109
+
+V/SDL     (17031): onWindowFocusChanged(): false
+
+D/dalvikvm( 1241): GC_CONCURRENT freed 1869K, 41% free 6548K/11056K, paused 4ms+4ms, total 36ms
+
+V/SDL     (17031): surfaceDestroyed()
+I/ImSDL   (17031): onStop
+
+I/ActivityManager( 1070): START u0 {act=com.android.systemui.nubiarecent.action.TOGGLE_RECENTS flg=0x10800000 cmp=com.android.systemui/.NubiaRecent.UserGuideActivity} from pid 1117
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityManagerService.activityPaused:4576 android.app.ActivityManagerNative.onTransact:422 com.android.server.am.ActivityManagerService.onTransact:1747
+
+W/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack realStartActivityLocked call sendApkLanuchIntent rId = 40
+W/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack realStartActivityLocked call sendApkLanuchIntent LastPausedId = 2
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.realStartActivityLocked:782 com.android.server.am.ActivityStack.startSpecificActivityLocked:845 com.android.server.am.ActivityStack.resumeTopActivityLocked:1865 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.realStartActivityLocked:801 com.android.server.am.ActivityStack.startSpecificActivityLocked:845 com.android.server.am.ActivityStack.resumeTopActivityLocked:1865
+
+I/ActivityManager( 1070): START u0 {act=com.android.systemui.nubiarecent.action.TOGGLE_RECENTS flg=0x10800000 cmp=com.android.systemui/.NubiaRecent.NubiaRecentsActivity} from pid 1117
+
+D/dalvikvm( 1117): GC_FOR_ALLOC freed 1955K, 36% free 16904K/26032K, paused 17ms, total 18ms
+D/dalvikvm( 1117): GC_CONCURRENT freed 2K, 27% free 25001K/34136K, paused 9ms+3ms, total 41ms
+
+W/ActivityManager( 1070): Activity pause timeout for ActivityRecord{41bae6e0 u0 com.android.systemui/.NubiaRecent.UserGuideActivity}
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityStack$ActivityStackHandler.handleMessage:359 android.os.Handler.dispatchMessage:99 android.os.Looper.loop:137
+
+W/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack realStartActivityLocked call sendApkLanuchIntent rId = 41
+W/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack realStartActivityLocked call sendApkLanuchIntent LastPausedId = 40
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.realStartActivityLocked:782 com.android.server.am.ActivityStack.startSpecificActivityLocked:845 com.android.server.am.ActivityStack.resumeTopActivityLocked:1865 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.realStartActivityLocked:801 com.android.server.am.ActivityStack.startSpecificActivityLocked:845 com.android.server.am.ActivityStack.resumeTopActivityLocked:1865
+
+I/ActivityManager( 1070): Displayed com.android.systemui/.NubiaRecent.NubiaRecentsActivity: +198ms (total +713ms)
+
+I/ActivityManager( 1070): Force stopping package me.sfalexrog.imguidemo appid=10075 user=0
+I/ActivityManager( 1070): Killing proc 17031:me.sfalexrog.imguidemo/u0a10075: force stop me.sfalexrog.imguidemo
+I/ActivityManager( 1070):   Force finishing activity ActivityRecord{41951a10 u0 me.sfalexrog.imguidemo/.DemoActivity}
+
+I/ActivityManager( 1070): Force stopping package cn.nubia.lockscreen appid=10028 user=0
+I/ActivityManager( 1070): Killing proc 16215:cn.nubia.lockscreen/u0a10028: force stop cn.nubia.lockscreen
+I/ActivityManager( 1070): Force stopping package cn.nubia.security appid=10043 user=0
+I/ActivityManager( 1070): Killing proc 16170:cn.nubia.security/u0a10043: force stop cn.nubia.security
+W/ActivityManager( 1070): Scheduling restart of crashed service cn.nubia.security/.safeguard.remoteguard.AntitheftManagerService in 5000ms
+I/ActivityManager( 1070):   Force stopping service ServiceRecord{4343de88 u0 cn.nubia.security/.safeguard.remoteguard.AntitheftManagerService}
+I/ActivityManager( 1070): Force stopping package com.qualcomm.services.location appid=1000 user=0
+
+I/WindowState( 1070): WIN DEATH: Window{41a4b080 u0 SurfaceView}
+
+I/WindowState( 1070): WIN DEATH: Window{41a31850 u0 me.sfalexrog.imguidemo/me.sfalexrog.imguidemo.DemoActivity}
+
+I/ActivityManager( 1070): Force stopping package me.sfalexrog.imguidemo appid=10075 user=0
+
+D/dalvikvm( 1070): GC_FOR_ALLOC freed 6774K, 52% free 25267K/52536K, paused 64ms, total 66ms
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.activityPaused:1106 com.android.server.am.ActivityManagerService.activityPaused:4576 android.app.ActivityManagerNative.onTransact:422 com.android.server.am.ActivityManagerService.onTransact:1747
+
+E/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack sendActivityStackChangedIntent begin mMoveTaskFlag = 0
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 prevTaskId = 41
+V/ActivityManager( 1070): THREE_FINGER_SLIDE ActivityStack resumeTopActivityLocked 222 nextTaskId = 2
+
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.sendActivityStackChangedIntent:4890 com.android.server.am.ActivityStack.resumeTopActivityLocked:1732 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212
+W/ContextImpl( 1070): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1055 com.android.server.am.ActivityStack.resumeTopActivityLocked:1799 com.android.server.am.ActivityStack.resumeTopActivityLocked:1471 com.android.server.am.ActivityStack.completePauseLocked:1212 com.android.server.am.ActivityStack.activityPaused:1109
+
+D/dalvikvm(17211): Trying to load lib libjavacore.so 0x0
+D/dalvikvm(17211): Added shared lib libjavacore.so 0x0
+D/dalvikvm(17211): Trying to load lib libnativehelper.so 0x0
+D/dalvikvm(17211): Added shared lib libnativehelper.so 0x0
+D/dalvikvm(17211): Note: class Landroid/app/ActivityManagerNative; has 163 unimplemented (abstract) methods
+
+I/ActivityManager( 1070): Start proc cn.nubia.security for broadcast cn.nubia.security/.safeguard.remoteguard.SecurityAppKilledReceiver: pid=17226 uid=10043 gids={50043, 1015, 3003, 1007, 1028}
+
+D/dalvikvm(17211): GC_CONCURRENT freed 92K, 16% free 525K/620K, paused 1ms+0ms, total 3ms
+
+^C终止批处理操作吗(Y/N)? y

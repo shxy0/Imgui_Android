@@ -20,7 +20,7 @@ public class DemoActivity extends SDLActivity {
     /* A fancy way of getting the class name */
     // private static final String TAG = DemoActivity.class.getSimpleName();
     
-    private static final String TAG = "DemoActivitySDL2";
+    private static final String TAG = "javaImSDL";
 
     /* A list of assets to copy to internal directory */
     private static final String[] ASSET_NAMES = new String[]{"bump.jpg",
@@ -47,6 +47,10 @@ public class DemoActivity extends SDLActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
+        Log.i(TAG, String.format("onCreate - API Level %d", SDK_INT));
+
         /* We're going to unpack our assets to a location that's accessible
          * via the usual stdio means. This is to avoid using AAssetManager
          * in our native code. */
@@ -73,6 +77,37 @@ public class DemoActivity extends SDLActivity {
                 Log.e(TAG, "Could not open " + assetName + " from assets, that should not happen", e);
             }
         }
+    }
+    protected void onStart()
+    {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+    protected void onResume() 
+    {
+        super.onResume();
+        Log.i(TAG, "onResume");
+    }
 
+    protected void onPause()
+    {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+    protected void onStop()
+    {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+    protected void onRestart()
+    {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
     }
 }

@@ -44,6 +44,7 @@ static SDL_GLContext createCtx(SDL_Window *w)
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 #endif
+
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
@@ -61,10 +62,12 @@ static SDL_GLContext createCtx(SDL_Window *w)
     }
 
     int major, minor, mask;
-    int r, g, b, a, depth;
-    SDL_GL_GetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, &mask);
+
+    SDL_GL_GetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,  &mask);
     SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &major);
     SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &minor);
+
+    int r, g, b, a, depth;
 
     SDL_GL_GetAttribute(SDL_GL_RED_SIZE,   &r);
     SDL_GL_GetAttribute(SDL_GL_GREEN_SIZE, &g);
@@ -89,6 +92,7 @@ static SDL_GLContext createCtx(SDL_Window *w)
                   << ", R" << r << "G" << g << "B" << b << "A" << a << ", depth bits: " << depth;
 
     SDL_GL_MakeCurrent(w, ctx);
+    
 #ifdef __ANDROID__
     if (major == 3)
     {
@@ -114,6 +118,7 @@ static SDL_GLContext createCtx(SDL_Window *w)
     newFrame = ImGui_ImplSdlGL3_NewFrame;
     shutdown = ImGui_ImplSdlGL3_Shutdown;
 #endif
+
     Log(LOG_INFO) << "Finished initialization";
     return ctx;
 }
@@ -222,16 +227,16 @@ int main(int argc, char** argv)
                             alogI("SDL_APP_low-memory");
                             break;
                         case SDL_APP_WILLENTERBACKGROUND:
-                            alogI("SDL_APP_will-enter-back-ground");
+                            alogI("SDL_APP_will-enter-Back-ground");
                             break;
                         case SDL_APP_DIDENTERBACKGROUND:
-                            alogI("SDL_APP_did-enter-back-ground");
+                            alogI("SDL_APP_done-enter-Back-ground");
                             break;
                         case SDL_APP_WILLENTERFOREGROUND:
-                            alogI("SDL_APP_will-enter-fore-ground");
+                            alogI("SDL_APP_will-enter-Fore-ground");
                             break;
                         case SDL_APP_DIDENTERFOREGROUND:
-                            alogI("SDL_APP_did-enter-fore-ground");
+                            alogI("SDL_APP_done-enter-Fore-ground");
                             break;
                         default:
                             break;
@@ -244,6 +249,7 @@ int main(int argc, char** argv)
                 SDL_StopTextInput();
             }
             newFrame(window);
+            
             // 1. Show a simple window
             // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
             {
@@ -251,12 +257,14 @@ int main(int argc, char** argv)
                 ImGui::Text("Hello, world!");
                 ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
                 ImGui::ColorEdit3("clear color", (float *) &clear_color);
+                
                 if (ImGui::Button("Test Window")) show_test_window ^= 1;
                 if (ImGui::Button("Another Window")) show_another_window ^= 1;
+                
                 ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
                             ImGui::GetIO().Framerate);
             }
-
+/*
             // 2. Show another simple window, this time using an explicit Begin/End pair
             if (show_another_window) {
                 ImGui::SetNextWindowSize(ImVec2(200, 100), ImGuiSetCond_FirstUseEver);
@@ -280,7 +288,6 @@ int main(int argc, char** argv)
                 ImGui::End();
             }
 
-
             // Rendering
             glViewport(0, 0, (int) ImGui::GetIO().DisplaySize.x, (int) ImGui::GetIO().DisplaySize.y);
             glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
@@ -298,12 +305,23 @@ int main(int argc, char** argv)
                     teapot.rotateCameraBy(deltaX * 0.005f, deltaY * 0.005f);
             }
             teapot.draw();
+*/
+            // Clearing
+            glViewport(0, 0, (int) ImGui::GetIO().DisplaySize.x, (int) ImGui::GetIO().DisplaySize.y);
+            glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            alogI("after SDL_Clearing");
+            
             ImGui::Render();
             SDL_GL_SwapWindow(window);
         }
     }
     shutdown();
     SDL_GL_DeleteContext(ctx);
+
     SDL_Quit();
+    alogI("after SDL_Quit();");   
+    
     return 0;
 }

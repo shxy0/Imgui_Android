@@ -8,9 +8,8 @@
 #ifdef __ANDROID__
 
 #include <android/log.h>
-// #include <cutils/log.h>
 
-#define LOG_TAG "ImguiSDL"
+#define LOG_TAG "cppImSDL"
 
 #define alogE(...) __android_log_print(ANDROID_LOG_ERROR,   LOG_TAG, __VA_ARGS__)
 #define alogW(...) __android_log_print(ANDROID_LOG_WARN,    LOG_TAG, __VA_ARGS__)
