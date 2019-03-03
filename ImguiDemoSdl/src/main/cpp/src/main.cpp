@@ -161,10 +161,12 @@ int main(int argc, char** argv)
     //io.Fonts->AddFontDefault();
     //io.Fonts->AddFontFromFileTTF("../../extra_fonts/Cousine-Regular.ttf", 15.0f);
     //io.Fonts->AddFontFromFileTTF("../../extra_fonts/DroidSans.ttf", 16.0f);
-    io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 32.0f);
+    io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 48.0f);
 
-    bool show_test_window = true;
+    bool show_test_window = false;
     bool show_another_window = false;
+    bool show_teapot_control = false;
+    
     ImVec4 clear_color = ImColor(114, 144, 154);
 
     Log(LOG_INFO) << "Entering main loop";
@@ -260,13 +262,15 @@ int main(int argc, char** argv)
                 
                 if (ImGui::Button("Test Window")) show_test_window ^= 1;
                 if (ImGui::Button("Another Window")) show_another_window ^= 1;
+                if (ImGui::Button("Teapot Control")) show_teapot_control ^= 1;
                 
                 ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
                             ImGui::GetIO().Framerate);
             }
-/*
+
             // 2. Show another simple window, this time using an explicit Begin/End pair
-            if (show_another_window) {
+            if (show_another_window) 
+            {
                 ImGui::SetNextWindowSize(ImVec2(200, 100), ImGuiSetCond_FirstUseEver);
                 ImGui::Begin("Another Window", &show_another_window);
                 ImGui::Text("Hello");
@@ -274,47 +278,49 @@ int main(int argc, char** argv)
             }
 
             // 3. Show the ImGui test window. Most of the sample code is in ImGui::ShowTestWindow()
-            if (show_test_window) {
+            if (show_test_window) 
+            {
                 ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiSetCond_FirstUseEver);
                 ImGui::ShowTestWindow(&show_test_window);
             }
 
             // 4. Show some controls for the teapot
+            if (show_teapot_control)
             {
                 ImGui::Begin("Teapot controls");
                 ImGui::SliderFloat("Teapot rotation", &teapotRotation, 0, 2 * M_PI);
                 ImGui::Checkbox("Rotate synchronously", &rotateSync);
                 ImGui::Text("Zoom value: %f", teapot.zoomValue());
                 ImGui::End();
+
+                // Rendering
+                glViewport(0, 0, (int) ImGui::GetIO().DisplaySize.x, (int) ImGui::GetIO().DisplaySize.y);
+                
+                glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+                teapot.rotateTo(teapotRotation);
+                if (rotateSync)
+                    teapot.rotateCameraTo(teapotRotation);
+
+                if (!ImGui::IsMouseHoveringAnyWindow())
+                {
+                    if (std::abs(deltaZoom) > 0.001f)
+                        teapot.zoomBy(deltaZoom);
+                    if ((deltaX != 0) || (deltaY != 0))
+                        teapot.rotateCameraBy(deltaX * 0.005f, deltaY * 0.005f);
+                }
+
+                teapot.draw();
+
+                alogI("after teapot.draw");
             }
-
-            // Rendering
-            glViewport(0, 0, (int) ImGui::GetIO().DisplaySize.x, (int) ImGui::GetIO().DisplaySize.y);
-            glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            teapot.rotateTo(teapotRotation);
-            if (rotateSync)
-                teapot.rotateCameraTo(teapotRotation);
-
-            if (!ImGui::IsMouseHoveringAnyWindow())
-            {
-                if (std::abs(deltaZoom) > 0.001f)
-                    teapot.zoomBy(deltaZoom);
-                if ((deltaX != 0) || (deltaY != 0))
-                    teapot.rotateCameraBy(deltaX * 0.005f, deltaY * 0.005f);
-            }
-            teapot.draw();
-*/
-            // Clearing
-            glViewport(0, 0, (int) ImGui::GetIO().DisplaySize.x, (int) ImGui::GetIO().DisplaySize.y);
-            glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            alogI("after SDL_Clearing");
             
             ImGui::Render();
             SDL_GL_SwapWindow(window);
+
+            glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         }
     }
     shutdown();
