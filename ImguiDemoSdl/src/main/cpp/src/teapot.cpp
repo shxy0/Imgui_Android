@@ -153,6 +153,7 @@ bool Teapot::init()
     num_vertices = (sizeof(teapotPositions) / sizeof(teapotPositions[0])) / 3;
 
     std::vector<vtxData> bufferData(num_vertices);
+    
     for (int i = 0; i < num_vertices; ++i)
     {
         bufferData[i].pos = glm::vec3{teapotPositions[3*i], teapotPositions[3*i+1], teapotPositions[3*i+2]};
@@ -176,10 +177,12 @@ bool Teapot::init()
 
     glGenTextures(1, &tex_skybox);
     glBindTexture(GL_TEXTURE_CUBE_MAP, tex_skybox);
+
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
     for(const auto& face: faces)
     {
         int x, y, channels;
@@ -196,10 +199,12 @@ bool Teapot::init()
 
     glGenTextures(1, &tex_bump);
     glBindTexture(GL_TEXTURE_2D, tex_bump);
+
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
     {
         int x, y, channels;
         auto data = stbi_load("bump.jpg", &x, &y, &channels, 0);
@@ -433,7 +438,8 @@ static GLint compileShader(GLenum shaderType, const char* shaderSrc)
     return shader;
 }
 
-bool Teapot::compileShaders() {
+bool Teapot::compileShaders() 
+{
     GLint vertexShader = compileShader(GL_VERTEX_SHADER, vtxShader);
     GLint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragShader);
     if (vertexShader < 0 || fragmentShader < 0)

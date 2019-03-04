@@ -19,11 +19,15 @@ public:
     Teapot();
     ~Teapot();
     bool init();
+
     void draw();
+
     void rotateBy(float angleX, float angleY);
     void rotateTo(float angleX);
+
     void rotateCameraBy(float angleX, float angleY);
     void rotateCameraTo(float angleX);
+
     void zoomBy(float zoomFactor);
     float zoomValue();
 
@@ -69,15 +73,17 @@ private:
         GLint normalSampler;
         GLint envSampler;
     } uniforms;
+
     GLuint program;
 
     GLfloat rotX, rotY, zoom;
     GLfloat camRX, camRY;
+
     GLfloat addRotX, addRotY, addZoom;
     GLfloat addCamRX, addCamRY;
-
+    
+public:
     bool compileShaders();
-
 };
 
 #endif //IMGUI_DEMO_TEAPOT_H

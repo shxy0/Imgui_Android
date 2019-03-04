@@ -11,6 +11,7 @@
 #include "gl_glcore_3_3.h"
 #include "imgui_impl_sdl_gl3.h"
 #endif
+
 #include "teapot.h"
 
 #include <unistd.h>
@@ -272,6 +273,9 @@ int main(int argc, char** argv)
                     initImgui(window);
                     io = ImGui::GetIO();
                     io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 48.0f);
+
+                    teapot.init();
+
                     isForeGround = true;
                     break;
                     
