@@ -63,8 +63,10 @@ else()
 endif()
 
 target_link_libraries(demo ${SDL2_LIBRARY} glm)
+
 target_include_directories(demo PRIVATE ${SDL2_INCLUDE_DIR})
 target_include_directories(demo PRIVATE ${IMGUI_PATH})
 target_include_directories(demo PRIVATE ${IMGUI_IMPL_PATH})
 target_include_directories(demo PRIVATE ${GLLOAD_PATH})
+
 target_compile_definitions(demo PRIVATE ${GL_PROFILES})

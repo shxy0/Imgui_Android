@@ -126,6 +126,8 @@ static SDL_GLContext createCtx(SDL_Window *w)
 
 int main(int argc, char** argv)
 {
+    alogI("ENTER -- int main(int argc, char** argv)");
+    
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
 
     if (argc < 2)
@@ -134,14 +136,21 @@ int main(int argc, char** argv)
         SDL_Quit();
         return 1;
     }
-    if (chdir(argv[1])) {
+    
+    if  (chdir(argv[1])) 
+    {
         Log(LOG_ERROR) << "Could not change directory properly!";
-    } else {
+    } 
+    else 
+    {
         dirent **namelist;
         int numdirs = scandir(".", &namelist, NULL, alphasort);
-        if (numdirs < 0) {
+        if (numdirs < 0) 
+        {
             Log(LOG_ERROR) << "Could not list directory";
-        } else {
+        } 
+        else 
+        {
             for (int dirid = 0; dirid < numdirs; ++dirid) {
                 Log(LOG_INFO) << "Got file: " << namelist[dirid]->d_name;
             }
@@ -151,105 +160,134 @@ int main(int argc, char** argv)
 
     // Create window
     Log(LOG_INFO) << "Creating SDL_Window";
-    SDL_Window *window = SDL_CreateWindow("Demo App", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 800, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+    SDL_Window *window 
+        = SDL_CreateWindow
+              ( "Demo App"
+              , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED
+              , 1280, 800
+              , SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
+              );
+              
     SDL_GLContext ctx = createCtx(window);
+    
+    // ImGuiIO *pio = NULL;
     initImgui(window);
 
-    // Load Fonts
-    // (there is a default font, this is only if you want to change it. see extra_fonts/README.txt for more details)
+    // Load Fonts : change default font, see extra_fonts/README.txt
+    
     ImGuiIO& io = ImGui::GetIO();
+    
     //io.Fonts->AddFontDefault();
     //io.Fonts->AddFontFromFileTTF("../../extra_fonts/Cousine-Regular.ttf", 15.0f);
     //io.Fonts->AddFontFromFileTTF("../../extra_fonts/DroidSans.ttf", 16.0f);
+    
     io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 48.0f);
 
     bool show_test_window = false;
     bool show_another_window = false;
     bool show_teapot_control = false;
     
+    bool isForeGround = true;
+    
     ImVec4 clear_color = ImColor(114, 144, 154);
 
+    bool done = false;
+    float teapotRotation = 0;
+    bool rotateSync = false;
+
+    Teapot teapot;
+    teapot.init();
+
+    int deltaX = 0, deltaY = 0;
+    int prevX , prevY;
+    SDL_GetMouseState(&prevX, &prevY);
+
     Log(LOG_INFO) << "Entering main loop";
+
+    while (!done) 
     {
+        SDL_Event e;
 
-        bool done = false;
-        float teapotRotation = 0;
-        bool rotateSync = false;
+        deltaX = 0;
+        deltaY = 0;
 
-        Teapot teapot;
-        teapot.init();
+        float deltaZoom = 0.0f;
 
-        int deltaX = 0, deltaY = 0;
-        int prevX , prevY;
-        SDL_GetMouseState(&prevX, &prevY);
+        while (SDL_PollEvent(&e)) 
+        {
+            bool handledByImGui = processEvent(&e);
 
-        while (!done) {
-            SDL_Event e;
-
-            deltaX = 0;
-            deltaY = 0;
-
-            float deltaZoom = 0.0f;
-
-            while (SDL_PollEvent(&e)) {
-                bool handledByImGui = processEvent(&e);
-                {
-                    switch (e.type) 
-                    {
-                        case SDL_MOUSEBUTTONDOWN:
-                            prevX = e.button.x;
-                            prevY = e.button.y;
-                            break;
-                        case SDL_MOUSEMOTION:
-                            if (e.motion.state & SDL_BUTTON_LMASK) {
-                                deltaX += prevX - e.motion.x;
-                                deltaY += prevY - e.motion.y;
-                                prevX = e.motion.x;
-                                prevY = e.motion.y;
-                            }
-                            break;
-                        case SDL_MULTIGESTURE:
-                            if (e.mgesture.numFingers > 1) {
-                                deltaZoom += e.mgesture.dDist * 10.0f;
-                            }
-                            break;
-                        case SDL_MOUSEWHEEL:
-                            deltaZoom += e.wheel.y / 100.0f;
-                            break;
-                            
-                        case SDL_QUIT:
-                            done = true;
-                            alogI("SDL_QUIT");
-                            break;
-
-                        case SDL_APP_TERMINATING:
-                            alogI("SDL_APP_terminating");
-                            break;
-                        case SDL_APP_LOWMEMORY:
-                            alogI("SDL_APP_low-memory");
-                            break;
-                        case SDL_APP_WILLENTERBACKGROUND:
-                            alogI("SDL_APP_will-enter-Back-ground");
-                            break;
-                        case SDL_APP_DIDENTERBACKGROUND:
-                            alogI("SDL_APP_done-enter-Back-ground");
-                            break;
-                        case SDL_APP_WILLENTERFOREGROUND:
-                            alogI("SDL_APP_will-enter-Fore-ground");
-                            break;
-                        case SDL_APP_DIDENTERFOREGROUND:
-                            alogI("SDL_APP_done-enter-Fore-ground");
-                            break;
-                        default:
-                            break;
+            switch (e.type) 
+            {
+                case SDL_MOUSEBUTTONDOWN:
+                    prevX = e.button.x;
+                    prevY = e.button.y;
+                    break;
+                case SDL_MOUSEMOTION:
+                    if (e.motion.state & SDL_BUTTON_LMASK) {
+                        deltaX += prevX - e.motion.x;
+                        deltaY += prevY - e.motion.y;
+                        prevX = e.motion.x;
+                        prevY = e.motion.y;
                     }
-                }
+                    break;
+                case SDL_MULTIGESTURE:
+                    if (e.mgesture.numFingers > 1) {
+                        deltaZoom += e.mgesture.dDist * 10.0f;
+                    }
+                    break;
+                case SDL_MOUSEWHEEL:
+                    deltaZoom += e.wheel.y / 100.0f;
+                    break;
+                    
+                case SDL_QUIT:
+                    alogI("SDL_QUIT");
+
+                    done = true;
+                    break;
+
+                case SDL_APP_TERMINATING:
+                    alogI("SDL_APP_terminating");
+                    break;
+                case SDL_APP_LOWMEMORY:
+                    alogI("SDL_APP_low-memory");
+                    break;
+                    
+                case SDL_APP_WILLENTERBACKGROUND:
+                    alogI("SDL_APP_will-enter-Back-ground");
+                    break;
+                case SDL_APP_DIDENTERBACKGROUND:
+                    alogI("SDL_APP_done-enter-Back-ground");
+
+                    shutdown();
+                    isForeGround = false;
+                    break;
+                    
+                case SDL_APP_WILLENTERFOREGROUND:
+                    alogI("SDL_APP_will-enter-Fore-ground");
+                    break;
+                case SDL_APP_DIDENTERFOREGROUND:
+                    alogI("SDL_APP_done-enter-Fore-ground");
+
+                    initImgui(window);
+                    io = ImGui::GetIO();
+                    io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 48.0f);
+                    isForeGround = true;
+                    break;
+                    
+                default:
+                    break;
             }
+        } // while SDL_PollEvent
+        
+        if (isForeGround)
+        {
             if (io.WantTextInput) {
                 SDL_StartTextInput();
             } else {
                 SDL_StopTextInput();
             }
+            
             newFrame(window);
             
             // 1. Show a simple window
@@ -260,12 +298,15 @@ int main(int argc, char** argv)
                 ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
                 ImGui::ColorEdit3("clear color", (float *) &clear_color);
                 
-                if (ImGui::Button("Test Window")) show_test_window ^= 1;
+                if (ImGui::Button("Test Window"))    show_test_window    ^= 1;
                 if (ImGui::Button("Another Window")) show_another_window ^= 1;
                 if (ImGui::Button("Teapot Control")) show_teapot_control ^= 1;
                 
-                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
-                            ImGui::GetIO().Framerate);
+                ImGui::Text
+                    ( "Application average %.3f ms/frame (%.1f FPS)"
+                    , 1000.0f / ImGui::GetIO().Framerate
+                    , ImGui::GetIO().Framerate
+                    );
             }
 
             // 2. Show another simple window, this time using an explicit Begin/End pair
@@ -312,17 +353,18 @@ int main(int argc, char** argv)
                 }
 
                 teapot.draw();
-
-                alogI("after teapot.draw");
             }
-            
+
             ImGui::Render();
             SDL_GL_SwapWindow(window);
 
             glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         }
-    }
+        // end if (isForeGround)
+    } 
+    // end while (!done) 
+
     shutdown();
     SDL_GL_DeleteContext(ctx);
 
